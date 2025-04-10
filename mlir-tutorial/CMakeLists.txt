@@ -18,3 +18,4 @@ include(HandleLLVMOptions)
 include_directories(${LLVM_INCLUDE_DIRS} ${MLIR_INCLUDE_DIRS})
 
 add_subdirectory(ex1-io)
+add_subdirectory(ex2-build)
