@@ -19,4 +19,9 @@ include_directories(${LLVM_INCLUDE_DIRS} ${MLIR_INCLUDE_DIRS})
 
 add_subdirectory(ex1-io)
 add_subdirectory(ex2-build)
-add_subdirectory(ex3-dialect)
+
+# NOTE: 下面的子目录中都定义了 toy-opt
+# 如果同时存在会报错
+
+# add_subdirectory(ex3-dialect)
+add_subdirectory(ex5-pass)
