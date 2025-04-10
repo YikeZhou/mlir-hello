@@ -17,12 +17,4 @@ include(HandleLLVMOptions)
 
 include_directories(${LLVM_INCLUDE_DIRS} ${MLIR_INCLUDE_DIRS})
 
-add_executable(mlir-toy main.cpp)
-
-target_link_libraries(
-  mlir-toy
-  MLIRIR
-  MLIRParser
-  MLIRFuncDialect
-  MLIRArithDialect
-)
+add_subdirectory(ex1-io)
