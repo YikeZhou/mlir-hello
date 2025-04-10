@@ -21,9 +21,9 @@ cmake --build . --target install
 source setup.sh
 ```
 
-3. Build Toy Project
+3. Build Tutorial Project
 ```shell
-cd mlir-toy
+cd mlir-tutorial
 mkdir build && cd build
 cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=$(realpath ../../install)
 cmake --build .
