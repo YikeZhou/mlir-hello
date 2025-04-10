@@ -28,3 +28,6 @@ mkdir build && cd build
 cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=$(realpath ../../install)
 cmake --build .
 ```
+
+**Reference:**
+- [KEKE046/mlir-tutorial](https://github.com/KEKE046/mlir-tutorial)
