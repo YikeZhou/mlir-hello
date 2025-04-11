@@ -24,4 +24,5 @@ add_subdirectory(ex2-build)
 # 如果同时存在会报错
 
 # add_subdirectory(ex3-dialect)
-add_subdirectory(ex5-pass)
+# add_subdirectory(ex5-pass)
+add_subdirectory(ex6-pattern)
