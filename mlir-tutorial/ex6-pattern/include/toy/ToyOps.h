@@ -5,6 +5,7 @@
 
 // td 里面 include 的，这里也要 include 对应的 h 文件
 #include "toy/ToyDialect.h"
+#include "toy/ToyTypes.h"
 #include "mlir/Interfaces/InferTypeOpInterface.h"
 #include "mlir/Interfaces/SideEffectInterfaces.h"
 #include "mlir/Interfaces/ControlFlowInterfaces.h"

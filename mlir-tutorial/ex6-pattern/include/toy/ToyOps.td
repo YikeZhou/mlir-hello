@@ -3,6 +3,7 @@
 
 include "mlir/IR/OpBase.td"
 include "toy/ToyDialect.td"
+include "toy/ToyTypes.td"
 include "mlir/Interfaces/InferTypeOpInterface.td"
 include "mlir/Interfaces/SideEffectInterfaces.td"
 include "mlir/Interfaces/FunctionInterfaces.td"
@@ -16,23 +17,24 @@ class ToyOp<string mnemonic, list<Trait> traits = []> :
 // Pure 是 Trait，表示没有 SideEffect 的纯函数
 def AddOp : ToyOp<"add", [Pure, SameOperandsAndResultType]> {
   let summary = "add operation";
-  let arguments = (ins Variadic<AnyInteger>:$inputs); // 可变参数
-  let results = (outs AnyInteger:$result);
+  let arguments = (ins Variadic<ToyInteger>:$inputs); // 可变参数
+  let results = (outs ToyInteger:$result);
   let assemblyFormat = "$inputs attr-dict `:` type($result)";
 }
 
 def SubOp : ToyOp<"sub", [Pure, SameOperandsAndResultType]> {
   let summary = "sub operation";
-  let arguments = (ins AnyInteger:$lhs, AnyInteger:$rhs);
-  let results = (outs AnyInteger:$result);
-  let hasVerifier = true;
+  let arguments = (ins ToyInteger:$lhs, ToyInteger:$rhs);
+  let results = (outs ToyInteger:$result);
   let assemblyFormat = "$lhs `,` $rhs attr-dict `:` type($result)";
+  let hasVerifier = true;
 }
 
 def ConstantOp : ToyOp<"const", [Pure, InferTypeOpAdaptor]> {
   let summary = "const operation";
   let arguments = (ins APIntAttr:$value);
-  let results = (outs AnyInteger:$result);
+  let results = (outs ToyInteger:$result);
+  let assemblyFormat = "$value attr-dict";
   let extraClassDeclaration = [{
     int64_t getBitWidth() {
       return getResult().getType().getWidth();

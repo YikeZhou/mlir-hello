@@ -5,6 +5,13 @@
 #include "mlir/Interfaces/FunctionImplementation.h"
 #include "toy/ToyDialect.h"
 #include "toy/ToyOps.h"
+#include "toy/ToyTypes.h"
+#include "mlir/IR/DialectImplementation.h"
+#include "llvm/ADT/StringExtras.h"
+#include "llvm/ADT/StringSwitch.h"
+#include "llvm/ADT/TypeSwitch.h"
+#define GET_TYPEDEF_CLASSES
+#include "toy/ToyTypes.cpp.inc"
 
 #include "toy/ToyDialect.cpp.inc"
 #define GET_OP_CLASSES
@@ -17,6 +24,14 @@ void ToyDialect::initialize() {
   addOperations<
 #define GET_OP_LIST
 #include "toy/Toy.cpp.inc"
+  >();
+  registerTypes();
+}
+
+void ToyDialect::registerTypes() {
+  addTypes<
+#define GET_TYPEDEF_LIST
+#include "toy/ToyTypes.cpp.inc"
   >();
 }
 
